@@ -14,11 +14,11 @@ Can a penguin's species be predicted from four body measurements alone? And, as 
 ## Repository structure
 | File | Content |
 |---|---|
-| `[notebook_name].ipynb` | Full workflow: cleaning, exploration, models, tuning, evaluation |
+| `palmer_penguins.ipynb` | Full workflow: cleaning, exploration, models, tuning, evaluation |
 | `functions.py` | Reusable functions (e.g. `plot_confusion_map()`) |
 | `README.md` | This file |
 
-Presentation slides: [link]
+Presentation slides: [Palmers Penguins! (Google Slides)](https://docs.google.com/presentation/d/12vXzdgqsEE6BeXE0mAe7YB39DuGBXucag7C1TZM9Wqw/edit?usp=sharing)
 
 ## Workflow
 1. **Cleaning:** removed rows with missing values and one invalid `"."` entry in `sex`.
@@ -27,7 +27,7 @@ Presentation slides: [link]
 4. **Preparation:** 80/20 train-test split (`random_state=0`), MinMaxScaler fitted on the training set only.
 5. **Models:** KNN and Decision Tree, plus four ensemble methods: Bagging, Random Forest, AdaBoost, Gradient Boosting.
 6. **Tuning:** Grid Search with 5-fold cross-validation on KNN (`n_neighbors`, `weights`).
-7. **Evaluation:** accuracy, classification report, confusion matrices, and inspection of the misclassified penguins.
+7. **Evaluation:** accuracy against a majority-class baseline, classification report, confusion matrices, and inspection of the misclassified penguins.
 
 ## Results: species
 | Model | Test accuracy |
@@ -48,15 +48,4 @@ Presentation slides: [link]
 - The misclassified penguins are large Adelie females predicted as male.
 
 ## Limitations
-- **Small data:** 333 penguins, 67 in the test set, so single-test-set scores are noisy.
-- **Unrepresentative test set:** the split was not stratified, so the test set is 58% Adelie and 61% female, while the full dataset is 44% Adelie and roughly balanced by sex.
-- **Narrow scope:** three species from one small region; the model would not generalise to other penguin populations.
-- **No derived features** were engineered beyond scaling.
-
-## Possible applications
-Supporting field researchers in ecological monitoring, e.g. classifying birds from measurements when visual identification is uncertain.
-
-## How to run
-1. Clone the repo: `git clone [repo link]`
-2. Install the libraries: `pip install pandas scikit-learn matplotlib seaborn kagglehub`
-3. Open the notebook and run all cells. The first cells download the dataset from Kaggle.
+- **Small data:** 333
